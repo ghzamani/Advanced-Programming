@@ -55,7 +55,7 @@ namespace A1S3
         {
             char[] delimiters = new char[] { ' ', ',', '.', '!', '?', '@', '#', '"', '\'', '\"', '،',
                 '%', '*', '(', ')', '-', '_', ':', ';', '\r', '\n' };
-            string[] splitedWords = tweet.Split(delimiters);
+            string[] splitedWords = tweet.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
             return splitedWords;
         }
 
