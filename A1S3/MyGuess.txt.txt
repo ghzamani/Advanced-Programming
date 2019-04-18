@@ -1,0 +1,19 @@
+AfsharMahnaz.txt:Mahnaz Afshar:social: -2
+Alimotahari_ir.txt:Ali Motahari:political: -2
+Azarijahromi.txt:Azarijahromi:political: +2
+BBCBastabi.txt:Bastani:social: +1
+BehnoudMasoud.txt:Masoud Behnoud:political: -1
+Eshaq_Jahangiri.txt:Eshaq Jahangiri:social: -2
+HadadAdel_ir.txt:HadadAdel:social: -2
+hesamodin1.txt:hesamodin1:political: -2
+ir_aref.txt:ir_aref:political: -2
+ir_rezaee.txt:ir_rezaeei:social: -2
+israelPersian.txt:israelPersain:political: +2
+jadaaal.txt:jedaaal:social: -1
+Khamenei_fa.txt:Khamenei_fa:political: -2
+mah_sadeghi.txt:mah_sadeghi:political: -1
+MohajeraniSayed.txt:MohajeraniSayed:political: -2
+Mostafatajzade.txt:Mostafatajzade:political: -1
+Rouhani_ir.txt:ARouhani_ir:political: -1
+t_alidoosti.txt:t_alidoosti:social: +1
+USAdarfarsi.txt:USAdarfarsi:political: +1
