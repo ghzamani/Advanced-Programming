@@ -14,7 +14,7 @@ namespace A1S3.Tests
         [TestMethod()]
         public void Q1_GetWordsTest()
         {
-            string path = @"C:\git\AP97982\A1S3\A1S3\Get Words Test.txt";
+            string path = @"..\..\..\A1S3\Get Words Test.txt";
             string[] real = Program.Q1_GetWords(path);
             string[] expected = { "Hi", "This", "is", "a", "test", "for", "AP", "class", "have", "a", "nice", "day" };
 
