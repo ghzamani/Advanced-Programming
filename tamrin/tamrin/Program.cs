@@ -9,18 +9,20 @@ namespace tamrin
     public class Item
     {
         public int Id { get; set; }
+        public string Seller { get; set; }
         public string Title { get; set; }
         public double Price { get; set; }
         public DateTime RealeseDate { get; set; }
         public string Brand { get; set; }
 
-        public Item(int id,string title, double price, 
-            DateTime realeseDate, string brand)
+        public Item(string title,  double price, DateTime realeseDate,
+             string brand, string seller)
         {
-            this.Id = id;
+            this.Seller = seller;
             this.Title = title;
             this.Price = price;
             this.RealeseDate = realeseDate;
+            this.Brand = brand;
         }
 
         public Item() { }

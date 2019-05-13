@@ -19,20 +19,28 @@ namespace tamrin
 
     public class PriceRangeFilter : IFilter
     {
-        public double minPrice;
-        public double maxPrice;
-
+        public double MinPrice;
+        public double MaxPrice;
+        public PriceRangeFilter(double min, double max)
+        {
+            this.MinPrice = min;
+            this.MaxPrice = max;
+        }
         public bool Filter(Item item)
         {
-            if (item.Price <= minPrice && item.Price >= maxPrice)
+            if (item.Price >= MinPrice && item.Price <= MaxPrice)
                 return true;
             return false;
         }
     }
 
-    public class ReleasedDateFilter : IFilter
+    public class ReleaseDateFilter : IFilter
     {
         public DateTime Date;
+        public ReleaseDateFilter(DateTime date)
+        {
+            Date = date;
+        }
         public bool Filter(Item item)
         {
             return item.RealeseDate >= Date;
@@ -41,7 +49,11 @@ namespace tamrin
 
     public class BrandFilter : IFilter
     {
-        public string MyBrand; 
+        public string MyBrand;
+        public BrandFilter(string myBrand)
+        {
+            MyBrand = myBrand;
+        }
         public bool Filter(Item item)
         {
             return item.Brand == MyBrand;

@@ -4,8 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using tamrin;
 
 namespace tamrinTests
-{ }
-   /* [TestClass]
+{ 
+    [TestClass]
     public class DigiTests
     {
         private ItemInventory TestInitialize()
@@ -64,4 +64,4 @@ namespace tamrinTests
             CollectionAssert.Contains(filtered, inv.Items[1]);
         }
     }
-}*/
+}
