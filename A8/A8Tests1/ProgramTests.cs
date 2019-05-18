@@ -118,9 +118,11 @@ namespace A8.Tests
             DateTime d2 = new DateTime(2008, 01, 20);
             Human h2 = new Human("Masoud", "Khademi", d2, 170);
             Human h3 = new Human("Nazanin", "Ashrafi", d1, 158);
+            Human h4 = new Human("Nazanin", "Ashrafi", d1, 158); 
 
             Assert.AreNotEqual(h1.GetHashCode(), h2.GetHashCode());
             Assert.AreNotEqual(h3.GetHashCode(), h2.GetHashCode());
+            Assert.AreEqual(h3.GetHashCode(), h4.GetHashCode());
         }
 
        
