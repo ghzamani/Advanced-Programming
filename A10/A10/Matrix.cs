@@ -81,9 +81,10 @@ namespace A10
         public static Matrix<_Type> operator +(Matrix<_Type> m1, Matrix<_Type> m2)
         {
             if (!(m1.RowCount == m2.RowCount && m1.ColumnCount == m2.ColumnCount))
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("RowsCount or ColumnsCount weren't the same" +
+                    ", so '+' is invalid" );
 
-            Matrix<_Type> sum = new Matrix<_Type>(m1.RowCount, m1.ColumnCount);
+            Matrix <_Type> sum = new Matrix<_Type>(m1.RowCount, m1.ColumnCount);
             for (int i = 0; i < sum.RowCount; i++)
                 sum[i] = m1[i] + m2[i];
         
@@ -99,9 +100,10 @@ namespace A10
         public static Matrix<_Type> operator *(Matrix<_Type> m1, Matrix<_Type> m2)
         {
             if (m1.ColumnCount != m2.RowCount)
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("First matrix ColumnCount is not the same as" +
+                    " Second matrix RowCount , so '*' is invalid");
 
-            Matrix<_Type> m2columnsvectors = new Matrix<_Type>(m2.ColumnCount,m2.RowCount);
+            Matrix <_Type> m2columnsvectors = new Matrix<_Type>(m2.ColumnCount,m2.RowCount);
             for(int i=0; i < m2.ColumnCount; i++)
             {
                 m2columnsvectors[i] = m2.GetColumn(i);
@@ -126,11 +128,8 @@ namespace A10
         /// <returns>IEnumerable</returns>
         protected IEnumerable<_Type> GetColumnEnumerator(int col)
         {
-            Vector<_Type> columnVectors = new Vector<_Type>(this.RowCount);
             for (int i = 0; i < RowCount; i++)
-                columnVectors[i] = Rows[i][col];
-            foreach (var columnVector in columnVectors)
-                yield return columnVector;
+                yield return Rows[i][col];
         } 
 
         protected Vector<_Type> GetColumn(int col) => 
@@ -139,13 +138,16 @@ namespace A10
 
         public bool Equals(Matrix<_Type> other)
         {
-            return this.ToString() == other.ToString();
-            /*for(int i =0; i < Rows.Length; i++)
+            if (!(other.RowCount == this.RowCount &&
+                other.ColumnCount == this.ColumnCount))
+                return false;
+
+            for (int i = 0; i < RowCount; i++)
             {
                 if (Rows[i] != other[i])
                     return false;
-            }
-            return true;*/
+            } 
+            return true;
         }
 
         public override string ToString()
@@ -174,7 +176,7 @@ namespace A10
         public override bool Equals(object obj)
         {
             Matrix<_Type> matrix = obj as Matrix<_Type>;
-            return Equals(matrix);
+            return this == matrix;
         }
         
         public override int GetHashCode()

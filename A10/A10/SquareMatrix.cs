@@ -17,6 +17,11 @@ namespace A10
         {
         }
 
-        
+        public SquareMatrix(int rowCount, int colCount)
+            :base(rowCount,colCount)
+        {
+            if (rowCount != colCount)
+                throw new InvalidDataException("This isn't a SqaureMatrix");
+        }
     }
 }
