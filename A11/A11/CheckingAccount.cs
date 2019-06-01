@@ -12,21 +12,19 @@
         
         public override void Credit(double amount)
         {
-            if (amount >= 0)
-                this.Balance = Balance + amount - TransactionFee;
-            else
-                base.Credit(amount);
+            base.Credit(amount);
+            this.Balance -= TransactionFee;
         }
 
         public override bool Debit(double amount)
-        {
-            if (amount <= this.Balance)
-            {
-                this.Balance = Balance - amount - TransactionFee;
-                return true;
-            }
-            else
-                return base.Debit(amount);
+        {            
+            bool baseDebit = base.Debit(amount);
+
+            if (!baseDebit)
+                return baseDebit;
+
+            this.Balance -= TransactionFee;
+            return baseDebit;
         }
     }
 }

@@ -20,18 +20,20 @@ namespace A11
 
         public override string ToString()
         {
-            string str = $"Initial balance is invalid. Setting balance to 0.";
-            return str;
+            if (Balance == 0)
+            {
+                string str = $"Initial balance is invalid. Setting balance to 0.";
+                return str;
+            }
+            else return base.ToString();
         }
 
         public virtual void Credit(double amount)
         {
-            if (amount >= 0) 
-                this.Balance += amount;
-            else
-            {
+            if(amount < 0)
                 throw new ArgumentException("Credit amount must be positive");
-            }
+
+            this.Balance += amount;           
         }
 
         public virtual bool Debit(double amount)
