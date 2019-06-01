@@ -47,8 +47,7 @@ namespace A10
         {
             this.Data = new _Type[length];
         }
-
-
+                
         /// <summary>
         /// Copy constructor
         /// </summary>
@@ -136,18 +135,15 @@ namespace A10
                 multiplied += (dynamic) v1.Data[i] * v2.Data[i];
             return multiplied;
         }
-
-        
-
+                
         /// <summary>
         /// Equality operator
         /// </summary>
         /// <param name="v1">vector 1</param>
         /// <param name="v2">vector 2</param>
         /// <returns>whether v1 is equal to v2</returns>
-        public static bool operator ==(Vector<_Type> v1, Vector<_Type> v2) 
-            => v1.ToString() == v2.ToString();
-
+        public static bool operator ==(Vector<_Type> v1, Vector<_Type> v2)
+            => v1.Equals(v2);
 
         /// <summary>
         /// Inequality operator
@@ -156,7 +152,7 @@ namespace A10
         /// <param name="v2">vector 2</param>
         /// <returns>v1 not equal to v2</returns>
         public static bool operator !=(Vector<_Type> v1, Vector<_Type> v2)
-            => !(v1.ToString() == v2.ToString());
+            => !v1.Equals(v2);
 
         /// <summary>
         /// Override Object.Equals
@@ -166,7 +162,7 @@ namespace A10
         public override bool Equals(object obj)
         {
             Vector<_Type> v = obj as Vector<_Type>;
-            return this.ToString() == v.ToString();
+            return this == v; 
         }
 
         /// <summary>
@@ -176,7 +172,16 @@ namespace A10
         /// <returns>whether other vector is equal to this vector</returns>
         public bool Equals(Vector<_Type> other)
         {
-            return other.Data == Data;
+            if (other.Size != this.Size)
+                return false;
+            
+            for(int i=0; i < other.Size; i++)
+            {
+                if ((dynamic)other[i] != Data[i])
+                    return false;
+            }
+
+            return true;            
         }
 
         public override int GetHashCode()
