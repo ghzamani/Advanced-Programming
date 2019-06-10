@@ -61,7 +61,7 @@ namespace E2.Tests
         [ExpectedException(typeof(FormatException))]
         public void CalculateSumTestFormatException()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
             int result = Basics.CalculateSum("a+b");
         }
 

@@ -43,7 +43,8 @@ namespace E2.Linq
 
         public MessageData MostRepliedMessage()
         {
-            throw new NotImplementedException();
+            return Messages.OrderByDescending(d => d.ReplyMessageId).First();
+            
         }
 
         public Tuple<string, int>[] MostPostedMessagePersons()

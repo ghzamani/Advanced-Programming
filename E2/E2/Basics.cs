@@ -20,7 +20,7 @@ namespace E2
     {
         public static int CalculateSum(string expression)
         {
-            if (!char.IsDigit(expression[expression.Length - 1]))
+            if(expression[expression.Length-1] == '+')
                 throw new InvalidDataException();
 
             var str = expression.Split('+');
@@ -29,9 +29,9 @@ namespace E2
             {
                 try { nums.Add(int.Parse(s)); }
 
-                catch(Exception e) //eshtebah
+                catch
                 {
-                    throw e;
+                    throw new FormatException();
                 }
             }
             int sum = 0;
@@ -63,10 +63,15 @@ namespace E2
             double pi = 0;
             for(int i=0; i<int.MaxValue; i++)
             {
-                //pi = pi + 1/ (2i + 1);
+                if (i % 2 == 0)
+                    pi += (double) 1 / (2 * i + 1);
+                else pi -= (double) 1 / (2 * i + 1);
+
+                if (pi == Math.Round(Math.PI, 7))
+                    return i + 1;
+                
             }
-            Math.Round(Math.PI, 7);
-            throw new NotImplementedException();
+            return 0;
         }
 
         public static int Fibonacci(this int n)

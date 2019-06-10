@@ -7,9 +7,18 @@ namespace E2
 
     public static class Threading
     {
+        
         public static void MakeItFaster(params Action[] actions)
         {
-            throw new NotImplementedException();
+            List<Task> list = new List<Task>();
+            Parallel.ForEach(actions, action =>
+            {
+                Task t = new Task(action);
+                list.Add(t);
+                t.Start();
+            });
+
+            Task.WaitAll(list.ToArray());
         }
     }
 }

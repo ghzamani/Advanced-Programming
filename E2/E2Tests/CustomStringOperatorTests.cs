@@ -58,9 +58,6 @@ namespace E2.Tests
         [TestMethod()]
         public void StringReverseExplicitOperatorTest()
         {
-            Assert.Inconclusive();
-            
-
             MyString s1 = new MyString("I love you");
             string ss1 = (string)s1;
             Assert.AreEqual(ss1, "I love you");
@@ -88,11 +85,11 @@ namespace E2.Tests
         public void StringPlusPlusOperatorTest()
         {
             Assert.Inconclusive();
-            /* UnComment
+             
 
             MyString s = (MyString)"I love you";
             Assert.AreEqual(s++, "I LOVE YOU");
-            */
+            
         }
 
         /// <summary>

@@ -48,20 +48,17 @@
     public class Teacher : Employee
     {
         private string _name;
-        private bool _female;
-        public bool IsFemale { get => _female; }
-
-        //public virtual string Name
-        //{
-        //    get => $"{_name}";
-        //}
+        public override string Name
+        {
+            get
+            {
+                return "استاد " + _name;
+            }
+        }
 
         public Teacher(string name, bool isFemale) :base(name,isFemale)
         {
-        //    string[] n = name.Split();
-        //    n[0] = "استاد";
-        //    _name = string.Join(" ", n);
-            _name = "استاد " + name;            
+            _name = name;
         }
 
         public override int LunchRate => 10000;

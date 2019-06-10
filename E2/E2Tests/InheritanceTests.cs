@@ -149,7 +149,7 @@ namespace E2.Tests
         [TestMethod()]
         public void TeacherTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
             
             Person p = new Teacher("محمد رضا شجریان", false);
             Assert.IsFalse(p.IsFemale);
