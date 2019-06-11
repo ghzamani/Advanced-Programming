@@ -33,7 +33,7 @@ namespace EventDelegateThread
             });
 
             Task.WaitAll(myTasks.ToArray());
-            
+            s.Stop();
             return s.ElapsedMilliseconds;
         }
 
@@ -43,18 +43,18 @@ namespace EventDelegateThread
             List<Task> myList = new List<Task>();
             Parallel.ForEach(actions, (action) =>
             {
-                lock (myList)
+                for (int i = 0; i < count; i++)
                 {
-                    for (int i = 0; i < count; i++)
+                    lock (myList)
                     {
                         Task t = new Task(action);
-                        myList.Add(t);
                         t.Start();
+                        t.Wait();
                     }
-                }                
+                }
             });
-
-            Task.WaitAll(myList.ToArray());
+            
+            s.Stop();
             return s.ElapsedMilliseconds;
         }
 
@@ -73,16 +73,44 @@ namespace EventDelegateThread
         public static async Task<long> CallParallelAsync(params Action[] actions)
         {
             Stopwatch s = Stopwatch.StartNew();
-            Parallel.ForEach(actions, (action) =>
+            List<Task> myList = new List<Task>();
+            for (int i = 0; i < actions.Length; i++)
             {
-               //await Task.Run(action);
-            });
+                Task t = new Task(actions[i]);
+                t.Start();
+                myList.Add(t);
+            }
+            await Task.WhenAll(myList.ToArray());
+
             return s.ElapsedMilliseconds;
         }
 
         public static async Task<long> CallParallelThreadSafeAsync(int count, params Action[] actions)
         {
-            throw new NotImplementedException();
+            Stopwatch s = Stopwatch.StartNew();
+            List<Task> myList = new List<Task>();
+            foreach (var action in actions)
+            {
+                Task t = (Task.Run(() =>
+                {
+                    for (int i = 0; i < count; i++)
+                    {
+                        lock (myList)
+                        {
+                            Task t2 = new Task(action);
+                            t2.Start();
+                            t2.Wait();
+                        }
+                    }
+                }));
+
+                myList.Add(t);
+            };
+
+            await Task.WhenAll(myList.ToArray());
+
+            s.Stop();
+            return s.ElapsedMilliseconds;
         }
     }
 }
