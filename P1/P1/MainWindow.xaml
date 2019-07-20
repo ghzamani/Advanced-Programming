@@ -150,7 +150,8 @@
                             <Grid Name="function" Height="20" Canvas.Left="12" Canvas.Top="372" Width="592">
                                 <TextBlock Text="f(x) = " Margin="14,0,-14,0"/>
                                 <TextBox Name="func" Margin="49,-1,22,1" />
-                                <TextBlock Name="Deriv" Margin="5,24,-5,-24"/>
+                                <TextBlock Name="Der" Margin="5,24,117,-24"/>
+                                <Button Content="Draw" Name="DrawDeriv" Margin="435,24,22,-24" Click="DrawDeriv_Click"/>
                             </Grid>
                         </Canvas>
                     </TabItem>

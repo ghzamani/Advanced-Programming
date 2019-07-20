@@ -37,14 +37,7 @@ namespace P1
             timer.Interval = TimeSpan.FromMilliseconds(0.5);
             timer.Tick += timer_Tick;
             timer.Start();
-
-            //TextBlock xStick = new TextBlock();
-            //xStick.Text = "x";
-            //xStick.FontSize = 16;
-            //xStick.Margin = new System.Windows.Thickness(cartesian.Width - 36, cartesian.Height / 2 - 26, 20, cartesian.Height / 2 + 6);//(506, 114, 23, 146);
-            //xStick.Background = System.Windows.Media.Brushes.White;
-            ////xStick.TextAlignment = TextAlignment.Center;
-            //cartesian.Children.Add(xStick);
+            
 
         }
 
@@ -231,6 +224,7 @@ namespace P1
 
         #region DrawDiagram
         //draw button 
+        
         public void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
@@ -275,8 +269,22 @@ namespace P1
                 YAxis y = new YAxis(miny, maxy);
 
                 Plane p = new Plane(cartesian, x, y, function);
-                Deriv.Text = "fPrime(x) = " + Derivative(func.Text, 1);
+                
             }
+        }
+        
+        public void DrawDeriv_Click(object sender, RoutedEventArgs e)
+        {
+            Der.Text = "fPrime(x) = " + Derivative(func.Text, 1);
+            int miny = int.Parse(minyEntered.Text);
+            int maxy = int.Parse(maxyEntered.Text);
+            int minx = int.Parse(minxEntered.Text);
+            int maxx = int.Parse(maxxEntered.Text);
+            XAxis x = new XAxis(minx, maxx);
+            YAxis y = new YAxis(miny, maxy);
+
+            MainWindow.f Deriv = GetFunction(Derivative(func.Text, 1));
+            Plane p = new Plane(cartesian, x, y, Deriv);
         }
 
         //clear button
@@ -288,7 +296,7 @@ namespace P1
             maxyEntered.Text = string.Empty;
             func.Text = string.Empty;
             drawDiagram.Children.Remove(cartesian);
-            Deriv.Text = string.Empty;
+            Der.Text = string.Empty;
         }
         #endregion
 
@@ -625,6 +633,7 @@ namespace P1
                 }
             }
         }
+
         #endregion
 
         
