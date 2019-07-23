@@ -121,16 +121,16 @@ namespace P1.Tests
         public void DerivativeTest()
         {
             string f = "2x^3+3x^5";
-            string res1 = "6x^2+15x^4";
-            Assert.AreEqual(res1, window.Derivative(f, 1));
+            string[] res1 = { "6x^2", "+", "15x^4" };
+            CollectionAssert.AreEqual(res1, window.Derivative(f, 1));
 
             string f2 = "2x^5+3x+4";
-            string res2 = "10x^4+3+0";
-            Assert.AreEqual(res2, window.Derivative(f2, 1));
+            string[] res2 = { "10x^4", "+", "3", "+", "0" };
+            CollectionAssert.AreEqual(res2, window.Derivative(f2, 1));
 
             string f3 = "-12x-4x^2";
-            string res3 = "-12-8x^1";
-            Assert.AreEqual(res3, window.Derivative(f3,1));
+            string[] res3 = { "-", "12", "-", "8x^1" };
+            CollectionAssert.AreEqual(res3, window.Derivative(f3,1));
         }
     }
 
