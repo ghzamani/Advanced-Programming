@@ -1,0 +1,22 @@
+﻿<Window x:Class="P1.First"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:P1"
+        mc:Ignorable="d"
+        Title="Math Analyzer" Height="450" Width="800">
+    <Grid Margin="0,0,2,-8">
+        <Grid.Background>
+            <ImageBrush ImageSource="math2.jpg"/>
+        </Grid.Background>
+
+
+        <TextBlock Text="Welcome to Math Analyzer!" TextAlignment="Center"
+                   Margin="230,110,235,262" FontFamily="Papyrus" FontSize="22"/>
+        <TextBlock Text="Please enter your name here" TextAlignment="Center" Margin="263,193,317,204" FontSize="16"/>
+        
+        <TextBox Name="user" TextAlignment="Center" Margin="480,184,235,198"/>
+        <Button Content="Go" Margin="350,270,345,127" Click="Button_Click"/>
+    </Grid>
+</Window>
